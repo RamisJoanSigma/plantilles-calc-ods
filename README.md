@@ -1,39 +1,45 @@
-# Plantilles fulls de càlcul (ODS + XLSX)
+# Plantilles fulls de càlcul (multi-format)
 
-Plantilles amb fórmules per a LibreOffice Calc, WPS Office Sheet i Excel.
+Plantilles amb fórmules per a LibreOffice / OpenOffice Calc, WPS Office Sheet i Excel.
+Organitzades per exercicis i exportades a diversos formats.
+
+## Estructura
+
+```
+exercici1/          # Checklist + Factura
+  checklist.ods / .xlsx / .csv
+  factura.ods / .xlsx / .pdf
+
+exercici3/          # Notes del professorat
+  quadern_notes_professorat.xlsx / .ods
+  llista_notes_finals.xlsx / .ods / .csv / .pdf
+```
 
 ## Contingut
 
-### 1. Checklist (`checklist.ods`)
-- Llista de tasques amb columna **Sí/No**
-- Recomptes automàtics: total, fets, pendents (`COUNTA`, `COUNTIF`)
+### Exercici 1
+- **Checklist**: recompte Sí/No amb `COUNTA` i `COUNTIF`
+- **Factura**: subtotals, descomptes, IVA, totals amb `SUM` / `SUMIF`
 
-### 2. Factura (`factura.ods`)
-- Factura completa amb subtotals, descomptes, IVA i total
-- Fórmules per línia i resum per tipus d'IVA (`SUM`, `SUMIF`)
+### Exercici 3
+- **Quadern de notes**: pesos configurables, mitjana ponderada (`SUMPRODUCT`), qualificacions, estadístiques + gràfic
+- **Llista notes finals**: 1a/2a/3a avaluació, nota final, mitjana, qualificació
 
-### 3. Quadern de notes del professorat (`quadern_notes_professorat.xlsx`)
-- Full **Notes**: alumnes, 8 activitats amb pesos configurables, mitjana ponderada, nota final, qualificació textual
-- Full **Estadístiques**: distribució de qualificacions + gràfic
-- Full **Instruccions**
-- Fórmules: `SUMPRODUCT`, `SUMIF`, `ROUND`, `COUNTIF`, `AVERAGEIF`, `MAX`, `MIN`
-- Format condicional (escala de color a les notes)
+## Formats disponibles
+| Format | Ús |
+|--------|-----|
+| `.ods` | LibreOffice / OpenOffice Calc |
+| `.xlsx` | WPS Office Sheet, Excel, LibreOffice |
+| `.csv`  | Intercanvi de dades |
+| `.pdf`  | Visualització / entrega |
 
-### 4. Llista de notes finals (`llista_notes_finals.xlsx`)
-Columnes:
-| Nom i cognoms | Correu | Nota 1a aval. | Nota 2a aval. | Nota 3a aval. | Nota final | Mitjana | Qualificació |
-
-- Nota final = mitjana de les 3 avaluacions
-- Resum del grup (mitjana, aprovats, suspesos, %…)
-
-## Com generar
+## Scripts generadors
+- `create_templates.py` → checklist + factura (ODS)
+- `create_notes_templates.py` → quadern + llista notes (XLSX)
 
 ```bash
-# ODS (checklist + factura)
-pip install odfpy
+pip install odfpy openpyxl
 python3 create_templates.py
-
-# XLSX (quadern + llista notes)
 python3 create_notes_templates.py
 ```
 
