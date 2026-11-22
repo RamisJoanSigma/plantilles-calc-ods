@@ -1,56 +1,41 @@
-# Plantilles LibreOffice Calc (ODS)
+# Plantilles fulls de càlcul (ODS + XLSX)
 
-Plantilles creades amb fórmules per a:
+Plantilles amb fórmules per a LibreOffice Calc, WPS Office Sheet i Excel.
 
-1. **Checklist** (`checklist.ods`) – Llista de tasques amb recompte automàtic
-2. **Factura** (`factura.ods`) – Factura completa amb càlculs d'IVA i descomptes
+## Contingut
 
-## Checklist
+### 1. Checklist (`checklist.ods`)
+- Llista de tasques amb columna **Sí/No**
+- Recomptes automàtics: total, fets, pendents (`COUNTA`, `COUNTIF`)
 
-- Columna de descripció de tasques
-- Columna **Fet?** amb valors **Sí** / **No** (utilitza validació de dades tipus llista)
-- Recomptes automàtics amb fórmules:
-  - **Total elements**: `=COUNTA(B5:B24)`
-  - **Fets (Sí)**: `=COUNTIF(C5:C24;"Sí")`
-  - **Pendents (No)**: `=COUNTIF(C5:C24;"No")`
+### 2. Factura (`factura.ods`)
+- Factura completa amb subtotals, descomptes, IVA i total
+- Fórmules per línia i resum per tipus d'IVA (`SUM`, `SUMIF`)
 
-### Com activar la llista desplegable Sí/No
+### 3. Quadern de notes del professorat (`quadern_notes_professorat.xlsx`)
+- Full **Notes**: alumnes, 8 activitats amb pesos configurables, mitjana ponderada, nota final, qualificació textual
+- Full **Estadístiques**: distribució de qualificacions + gràfic
+- Full **Instruccions**
+- Fórmules: `SUMPRODUCT`, `SUMIF`, `ROUND`, `COUNTIF`, `AVERAGEIF`, `MAX`, `MIN`
+- Format condicional (escala de color a les notes)
 
-1. Selecciona el rang `C5:C24`
-2. Menú **Dades → Validesa**
-3. Criteri: **Llista**
-4. Entrades: `Sí;No`
-5. Accepta
+### 4. Llista de notes finals (`llista_notes_finals.xlsx`)
+Columnes:
+| Nom i cognoms | Correu | Nota 1a aval. | Nota 2a aval. | Nota 3a aval. | Nota final | Mitjana | Qualificació |
 
-## Factura
+- Nota final = mitjana de les 3 avaluacions
+- Resum del grup (mitjana, aprovats, suspesos, %…)
 
-Basada en l'estructura de la factura d'exemple. Inclou:
-
-| Fórmula | Descripció |
-|---------|------------|
-| `[1] Subtotal` | `=Unitats × Preu Unitari` |
-| `[2] Total descompte` | `=Subtotal × % Descompte` |
-| `[3] Total IVA` | `=(Subtotal − Descompte) × % IVA` |
-| `[4] Total amb IVA` | `=Subtotal − Descompte + IVA` |
-| `[5] Import brut` | `=SUM(Subtotals)` |
-| `[6] Total descomptes` | `=SUM(Total descompte)` |
-| `[7] Base Imponible` | `SUMIF` per cada tipus d'IVA |
-| `[8] Import IVA` | `=Base × Tipus IVA` |
-
-El **TOTAL FACTURA** suma la columna de totals amb IVA.
-
-## Com generar les plantilles
+## Com generar
 
 ```bash
+# ODS (checklist + factura)
+pip install odfpy
 python3 create_templates.py
+
+# XLSX (quadern + llista notes)
+python3 create_notes_templates.py
 ```
 
-Requereix `odfpy` (`pip install odfpy`).
-
-## Fitxers
-
-- `checklist.ods` / `checklist.xlsx`
-- `factura.ods` / `factura.xlsx`
-- `create_templates.py` – script generador
-
-Obre els fitxers `.ods` amb **LibreOffice Calc**.
+## Repositori
+https://github.com/RamisJoanSigma/plantilles-calc-ods
