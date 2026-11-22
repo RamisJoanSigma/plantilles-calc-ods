@@ -1,47 +1,15 @@
-# Plantilles fulls de càlcul (multi-format)
+# Plantilles fulls de càlcul + Exercici 7 (macros)
 
-Plantilles amb fórmules per a LibreOffice / OpenOffice Calc, WPS Office Sheet i Excel.
-Organitzades per exercicis i exportades a diversos formats.
+## Exercici 7 — Tasca3.A.Exercici7.ElteuNom
 
-## Estructura
+Document amb 4 fulls:
+1. **Major / igual / menor que 10** (fórmula + macro Basic)
+2. **Parell / senar** (fórmula MOD + macro Basic)
+3. **Calculadora de canvi de base** (DEC2BIN/OCT/HEX, BIN2DEC, etc. + macro)
+4. **Passos per crear les macros** a LibreOffice Calc
 
-```
-exercici1/          # Checklist + Factura
-  checklist.ods / .xlsx / .csv
-  factura.ods / .xlsx / .pdf
+Fitxers: `Tasca3.A.Exercici7.ElteuNom.ods` / `.xlsx`
 
-exercici3/          # Notes del professorat
-  quadern_notes_professorat.xlsx / .ods
-  llista_notes_finals.xlsx / .ods / .csv / .pdf
-```
+Canvia «ElteuNom» pel teu nom abans d'entregar.
 
-## Contingut
-
-### Exercici 1
-- **Checklist**: recompte Sí/No amb `COUNTA` i `COUNTIF`
-- **Factura**: subtotals, descomptes, IVA, totals amb `SUM` / `SUMIF`
-
-### Exercici 3
-- **Quadern de notes**: pesos configurables, mitjana ponderada (`SUMPRODUCT`), qualificacions, estadístiques + gràfic
-- **Llista notes finals**: 1a/2a/3a avaluació, nota final, mitjana, qualificació
-
-## Formats disponibles
-| Format | Ús |
-|--------|-----|
-| `.ods` | LibreOffice / OpenOffice Calc |
-| `.xlsx` | WPS Office Sheet, Excel, LibreOffice |
-| `.csv`  | Intercanvi de dades |
-| `.pdf`  | Visualització / entrega |
-
-## Scripts generadors
-- `create_templates.py` → checklist + factura (ODS)
-- `create_notes_templates.py` → quadern + llista notes (XLSX)
-
-```bash
-pip install odfpy openpyxl
-python3 create_templates.py
-python3 create_notes_templates.py
-```
-
-## Repositori
-https://github.com/RamisJoanSigma/plantilles-calc-ods
+Repositori: https://github.com/RamisJoanSigma/plantilles-calc-ods
